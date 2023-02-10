@@ -106,6 +106,13 @@ class Yolov7FacePostprocessor:
         nms threshold for postprocessing, default is 0.45
         """
         return self._postprocessor.nms_threshold
+    
+    @property
+    def landmarks_per_face(self):
+        """
+        landmarks per face for postprocessing, default is 5
+        """
+        return self._postprocessor.landmarks_per_face
 
     @conf_threshold.setter
     def conf_threshold(self, conf_threshold):
@@ -118,6 +125,12 @@ class Yolov7FacePostprocessor:
         assert isinstance(nms_threshold, float),\
             "The value to set `nms_threshold` must be type of float."
         self._postprocessor.nms_threshold = nms_threshold
+
+    @landmarks_per_face.setter
+    def nms_threshold(self, landmarks_per_face):
+        assert isinstance(landmarks_per_face, float),\
+            "The value to set `landmarks_per_face` must be type of int."
+        self._postprocessor.landmarks_per_face = landmarks_per_face
 
 
 class YOLOv7Face(FastDeployModel):
